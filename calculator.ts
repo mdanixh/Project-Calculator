@@ -5,11 +5,19 @@ import {mul} from "./function.js"
 import {div} from "./function.js"
 
 import chalk from "chalk";
+const isNumber = (value:number) =>{
+    if (isNaN(value)) {
+        return "Please enter a valid number";
+    }
+    return true;
+};
+
 let question = await inquirer.prompt([
     {
         message: "Enter 1st integer",
         type: "number",
-        name: "num1"
+        name: "num1",
+        validate: isNumber
     },
     {
         message: "Select Operation:",
@@ -20,7 +28,8 @@ let question = await inquirer.prompt([
     {
         message: "Enter 2nd integer",
         type: "number",
-        name: "num2"
+        name: "num2",
+        validate: isNumber
     }
 ])
 
